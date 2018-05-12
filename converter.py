@@ -12,7 +12,10 @@ class Converter(object):
     def __init__(self, stream):
         stream.seek(0)
         self.stream = stream
-        self.image = Image.open(stream)
+        try:
+            self.image = Image.open(stream)
+        except IOError:
+            raise UnsupportedFormat()
         self.format = self.image.format.lower()
 
     def to_format(self, fmt):

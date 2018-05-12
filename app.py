@@ -16,9 +16,10 @@ app = Chalice(app_name='progimage')
 # ToDo: Users authentication
 # ToDo: Individual buckets per user
 # Todo: Format synonyms support: jpg/jpeg, gif/gif89 etc.
+# Todo: (?) We may wouldn't allow to have file duplicates under different names, use digests as ID of so
 # Todo: Correct Content-Type headers for output binary data
 # ToDo: Smart images cache: by user, image operation, region etc.
-# ToDo: Upload conditions: max image size, check image format is supported etc.
+# ToDo: Upload conditions: max image size, check if image format is supported etc.
 # Todo: Data output improvements: process and output big files by chunks to reduce memory load
 # Todo: Bulk uploads support
 # ToDo: Roles/Access types support
@@ -69,6 +70,7 @@ def get_image(image_id):
            methods=['PUT', 'POST'])
 def save_image():
     key = str(uuid.uuid4())
+    # We allow to have the same file under different keys
     try:
         utils.s3_upload(key, app.current_request.raw_body)
     except botocore.exceptions.ClientError as e:
