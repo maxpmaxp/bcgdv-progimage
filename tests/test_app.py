@@ -2,7 +2,9 @@ import unittest
 
 from unittest import TestCase
 
-import app, config
+import app
+
+from chalicelib import config
 
 
 class TestApp(TestCase):

@@ -1,5 +1,5 @@
 boto3==1.7.3
 chalice==1.2.3
 ipdb==0.10.1
-Pillow==3.4.2
+Pillow==5.1.0
 httpie==0.9.9

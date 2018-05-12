@@ -6,7 +6,7 @@ from unittest import TestCase
 
 from PIL import Image
 
-from converter import Converter, UnsupportedFormat
+from chalicelib.converter import Converter, UnsupportedFormat
 
 
 class TestConverter(TestCase):

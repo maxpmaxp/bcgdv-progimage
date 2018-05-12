@@ -5,8 +5,8 @@ from unittest import TestCase
 
 from chalice.config import Config
 from chalice.local import LocalGateway
+from chalicelib.utils import s3_remove
 from PIL import Image
-from utils import s3_remove
 
 import app
 

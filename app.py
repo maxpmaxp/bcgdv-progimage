@@ -6,10 +6,11 @@ import botocore.exceptions
 from chalice import Chalice, Response
 
 
-import config, utils
+from chalicelib import config, utils
 
-from converter import Converter, UnsupportedFormat
-from exceptions import raise_by_boto3_exception, raise_by_status_code
+from chalicelib.converter import Converter, UnsupportedFormat
+from chalicelib.\
+    exceptions import raise_by_boto3_exception, raise_by_status_code
 
 app = Chalice(app_name='progimage')
 
