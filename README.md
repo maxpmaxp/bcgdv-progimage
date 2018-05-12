@@ -44,7 +44,7 @@ Installation
 
 ::
 
-    $ git checkout http://github.com/maxpmaxp/bcgdv-progimage.git
+    $ git checkout https://github.com/maxpmaxp/bcgdv-progimage.git
     $ cd bcgdv-progimage
     $ virtualenv -p python3 -q --no-site-packages .venv
     $ .venv/bin/pip install --upgrade -r ./requirements.txt
