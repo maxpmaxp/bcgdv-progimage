@@ -8,7 +8,7 @@ from chalice import Chalice, Response
 
 import config, utils
 
-from convertor import Convertor, UnsupportedFormat
+from converter import Converter, UnsupportedFormat
 from exceptions import raise_by_boto3_exception, raise_by_status_code
 
 app = Chalice(app_name='progimage')
@@ -45,7 +45,7 @@ def convert_format(filename):
         raise_by_boto3_exception(e)
 
     try:
-        out = Convertor(in_stream).to_format(ext)
+        out = Converter(in_stream).to_format(ext)
     except UnsupportedFormat:
         # technically this means that the resource doesn't exist
         raise_by_status_code(404, "Unsupported format")

@@ -7,7 +7,7 @@ class UnsupportedFormat(Exception):
     pass
 
 
-class Convertor(object):
+class Converter(object):
 
     def __init__(self, stream):
         stream.seek(0)
