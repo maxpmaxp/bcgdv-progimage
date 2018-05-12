@@ -10,6 +10,6 @@ def raise_by_status_code(code, message):
 
 
 def raise_by_boto3_exception(e):
-    code = int(e.response['Error']['HTTPStatusCode'])
+    code = int(e.response['Error']['Code'])
     msg = e.response['Error']['Message']
     raise_by_status_code(code, msg)

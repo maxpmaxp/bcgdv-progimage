@@ -26,8 +26,8 @@ app = Chalice(app_name='progimage')
 
 
 @app.route('/hello')
-def index():
-    return {'version': config.version}
+def hello():
+    return Response(body={'version': config.version}, status_code=200, headers={'Content-Type': 'application/json'})
 
 
 @app.route('/format/{filename}')
@@ -67,7 +67,7 @@ def get_image(image_id):
 
 @app.route('/storage',
            content_types=config.supported_content_types,
-           methods=['PUT', 'POST'])
+           methods=['POST'])
 def save_image():
     key = str(uuid.uuid4())
     # We allow to have the same file under different keys
@@ -75,4 +75,4 @@ def save_image():
         utils.s3_upload(key, app.current_request.raw_body)
     except botocore.exceptions.ClientError as e:
         raise_by_boto3_exception(e)
-    return {"id": key}
+    return Response(body={"id": key}, status_code=200, headers={'Content-Type': 'application/json'})
