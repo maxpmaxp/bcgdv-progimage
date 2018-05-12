@@ -1,2 +1,0 @@
-# bcgdv-progimage
-Interview task
