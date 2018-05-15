@@ -1,5 +1,7 @@
+import logging
 import os.path
 import uuid
+
 
 import botocore.exceptions
 
@@ -63,7 +65,7 @@ def get_image(image_id):
         stream = utils.s3_download(image_id)
     except botocore.exceptions.ClientError as e:
         raise_by_boto3_exception(e)
-    return Response(body=stream.read(), status_code=200)
+    return Response(body=stream.read(), status_code=200, headers={"Content-type": "application/octet-stream"})
 
 
 @app.route('/storage',
